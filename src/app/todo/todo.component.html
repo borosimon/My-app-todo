@@ -1,0 +1,48 @@
+<div class="container">
+    <br/>
+    <h1>Application de Gestion de taches </h1>
+
+    <form name="todoForm">
+
+        <div class="form-group">
+            <label class="pb-2" for="todotitle">Titre</label>
+            <input class="form-control" id="todoTitle" placeholder="Titre" name="todotitle" type="text"  >
+        </div>
+        <div class="form-group pb-4">
+            <label class="pb-2" for="comment">Commentaire </label>
+            <textarea class="form-control" placeholder="commentaire" id="todo" name="comment" rows="5"></textarea>
+        </div>
+        <button type="submit" class="bn bn-primary">Submit</button>
+    </form>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <td>
+                    #
+                </td>
+
+                <td>
+                    Titre
+                </td>
+                <td>
+                    Commentaire
+                </td>
+                <td>
+                    Status
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @for(todo of todos; track todo.title; let i=$index){
+                <tr>
+                    <td [ngClass]="{'active':todo.enabled==true,'end':todo.enabled== false}">{{i+1}}</td>
+                    <td [ngClass]="{'active':todo.enabled==true,'end':todo.enabled== false}">{{todo.title}}</td>
+                    <td [ngClass]="{'active':todo.enabled==true,'end':todo.enabled== false}">{{todo.comment}}</td>
+                    <td><button  class="bn bn-primary">Cloturer</button></td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
